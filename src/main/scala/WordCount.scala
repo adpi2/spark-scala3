@@ -1,8 +1,8 @@
 import org.apache.spark.sql.SparkSession
 
-@main def wordcount =
+object wordcount extends App {
   val spark = SparkSession.builder().master("local").getOrCreate
-  try
+  try {
     val sc = spark.sparkContext
 
     val textFile = sc.textFile("text.txt")
@@ -10,6 +10,7 @@ import org.apache.spark.sql.SparkSession
                    .map(word => (word, 1))
                    .reduceByKey(_ + _)
     counts.collect.foreach(println)
-  finally
+  } finally {
     spark.close()
-
+  }
+}
