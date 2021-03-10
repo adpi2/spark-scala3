@@ -1,5 +1,6 @@
 scalaVersion := "2.13.5"
 
+autoScalaLibrary := false
 resolvers += "Spark Snapshots" at "https://repository.apache.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
